@@ -1,0 +1,17 @@
+<article class="post-card">
+  <a class="post-card__link" href="{{ post.url | relative_url }}">
+    <div class="post-card__image-wrap">
+      {% if post.image %}
+        <img class="post-card__image" src="{{ post.image | relative_url }}" alt="" loading="lazy">
+      {% else %}
+        <div class="post-card__image post-card__image--empty" aria-hidden="true"><span>✳</span></div>
+      {% endif %}
+    </div>
+    <div class="post-card__content">
+      <p class="post-card__date">{{ post.date | date: "%d %B %Y" }}</p>
+      <h3>{{ post.title }}</h3>
+      <p class="post-card__summary">{{ post.summary | default: post.excerpt | strip_html | strip_newlines | truncate: 160 }}</p>
+      <span class="read-more">Read entry <span aria-hidden="true">↗</span></span>
+    </div>
+  </a>
+</article>

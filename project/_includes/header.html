@@ -1,0 +1,9 @@
+<header class="site-header">
+  <a class="profile" href="{{ '/' | relative_url }}" aria-label="Go to homepage">
+    <img src="{{ site.author.image | relative_url }}" alt="{{ site.author.name }}" width="60" height="60">
+  </a>
+  <div class="identity">
+    <a class="identity__name" href="{{ '/' | relative_url }}">{{ site.author.name }}</a>
+    <p class="identity__field">{{ site.author.field }}</p>
+  </div>
+</header>

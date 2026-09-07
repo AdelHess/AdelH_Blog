@@ -1,0 +1,37 @@
+---
+layout: default
+---
+
+<article class="post-full">
+  <header class="post-full__header">
+    <a class="back-link" href="{{ '/' | relative_url }}">← Back to all writing</a>
+    <p class="eyebrow">{{ page.date | date: "%d %B %Y" }}</p>
+    <h1>{{ page.title }}</h1>
+    {% if page.summary %}<p class="post-full__summary">{{ page.summary }}</p>{% endif %}
+  </header>
+
+  {% if page.image %}
+    <figure class="post-full__image">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}" loading="eager">
+    </figure>
+  {% endif %}
+
+  <div class="post-full__body">
+    {{ content }}
+  </div>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ page.title | jsonify }},
+  "description": {{ page.summary | default: page.excerpt | strip_html | strip_newlines | jsonify }},
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ page.url | absolute_url }}" },
+  "author": { "@type": "Person", "name": {{ site.author.name | jsonify }} },
+  "publisher": { "@type": "Person", "name": {{ site.author.name | jsonify }} }{% if page.image %},
+  "image": "{{ page.image | absolute_url }}"{% endif %}
+}
+</script>
