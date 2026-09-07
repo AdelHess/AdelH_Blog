@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 
+gem "bigdecimal"
 gem "jekyll", "~> 3.9"
 gem "jekyll-paginate"
 gem "jekyll-seo-tag"
