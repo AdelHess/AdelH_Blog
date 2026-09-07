@@ -1,0 +1,33 @@
+---
+layout: default
+title: Home
+---
+
+<section class="intro" aria-labelledby="journal-title">
+  <p class="eyebrow">A living archive</p>
+  <h1 id="journal-title">Thoughts on the work<br><em>behind the numbers.</em></h1>
+  <p class="intro__lede">Notes from the intersection of advertising, measurement, and the questions that make both more useful.</p>
+</section>
+
+<section class="journal" aria-labelledby="journal-heading">
+  <div class="section-heading">
+    <h2 id="journal-heading">Latest writing</h2>
+    <span class="section-heading__line" aria-hidden="true"></span>
+    <span class="section-heading__count">{% if paginator.posts.size > 0 %}{{ paginator.posts.size }}{% else %}0{% endif %} / page</span>
+  </div>
+
+  {% if paginator.posts.size > 0 %}
+    <div class="post-grid">
+      {% for post in paginator.posts %}
+        {% include post-card.html post=post %}
+      {% endfor %}
+    </div>
+
+    {% include pagination.html %}
+  {% else %}
+    <div class="empty-state">
+      <span class="empty-state__mark" aria-hidden="true">—</span>
+      <p>No articles yet. Check back soon.</p>
+    </div>
+  {% endif %}
+</section>
